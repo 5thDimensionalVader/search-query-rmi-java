@@ -1,7 +1,10 @@
 import java.rmi.*;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileWriter;
+import javax.rmi.ssl.*;
 
 /*
   This is the client.
@@ -9,7 +12,12 @@ import java.io.FileWriter;
 
 public class Client {
   public static void main(String... args) throws RemoteException, Exception {
-    Search obj = (Search) Naming.lookup("query");
+    // constant value for the port number for the connection.
+    final int PORT = 6545;
+
+    // create registry
+    Registry registry = LocateRegistry.getRegistry(null,PORT, new SslRMIClientSocketFactory());
+    Search obj = (Search) registry.lookup("query");
 
     Scanner scanner = new Scanner(System.in);
     System.out.println("Enter name of product: ");

@@ -1,10 +1,10 @@
 import java.rmi.*;
 import java.rmi.server.UnicastRemoteObject;
-import java.io.FileReader;
 import java.nio.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import javax.rmi.ssl.*;
 
 
 /* 
@@ -13,8 +13,8 @@ import java.util.*;
 
 public class SearchQuery extends UnicastRemoteObject implements Search {
 
-  public SearchQuery() throws RemoteException {
-    super();
+  protected SearchQuery() throws RemoteException {
+    super(0, new SslRMIClientSocketFactory(), new SslRMIServerSocketFactory(null, null, true));
   }
 
   // remote interface 'Search' method 'query()' implementation
