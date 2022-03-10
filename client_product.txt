@@ -6,3 +6,5 @@ Cameras
 Xbox
 Computers
 PlayStation
+Xbox
+PlayStation

@@ -11,7 +11,6 @@ public class Server {
     final int PORT = 6545;
 
     Registry registry = LocateRegistry.createRegistry(PORT, new SslRMIClientSocketFactory(), new SslRMIServerSocketFactory(null, null, true));
-    System.setProperty("java.rmi.server.hostname", "10.1.2.3");
     
     SearchQuery stub = new SearchQuery();
     System.out.println("🟢 registry mechanism created and started ...");
